@@ -45,11 +45,10 @@ frameless Chromium browser window. Follow these instructions
 
 ```bash
 #!/bin/bash
+
 # Trixie Wayland Kiosk Autostart File
 # Start with a log file
 /home/pi/start_kiosk.sh > /home/pi/kiosk.log 2>&1 &
-# Launch your custom Python kiosk startup script
-/home/pi/start_kiosk.sh &
 ```
 
 * Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
@@ -86,9 +85,15 @@ export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-software-rasterizer"
 # Navigate to your .venv project folder and start the app
 # Note: Your folder may be different than /home/pi. Check
 # the path if there's a problem starting the application.
-cd /home/pi/flight-tracker
+cd /home/pi/flight-tracker/server
 source .venv/bin/activate
-PYTHONUNBUFFERED=1 uvicorn main:app --port 8000
+./start.sh &
+
+# Wait briefly for the server to start
+sleep 5
+
+# Start the Chromium browser window
+chromium-browser --kiosk --incognito --app=http://localhost:8000
 ```
 
 * Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
@@ -116,7 +121,7 @@ PYTHONUNBUFFERED=1 uvicorn main:app --port 8000
 From Raspberry Pi Connect open up a remote terminal and run the following commands:
 
 ```bash
-git clone https://github.com/rogerjaffe/flight-tracker-py-web.git
+git clone https://github.com/rogerjaffe/flight-tracker.git
 cd flight-tracker/server
 python3 -m venv .venv
 source .venv/bin/activate
