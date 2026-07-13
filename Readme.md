@@ -74,13 +74,13 @@ sleep 5
 
 # Define the Wayland Display requirements
 
-export XDG_RUNTIME_DIR=/run/user/$(id -u)
-export WAYLAND_DISPLAY=wayland-0 # Adjust this if your display name is different
-export QT_QPA_PLATFORM=wayland
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+#export WAYLAND_DISPLAY=wayland-0 # Adjust this if your display name is different
+#export QT_QPA_PLATFORM=wayland
 
 # Fix the EGL driver for the Raspberry Pi 3B+
 
-export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-software-rasterizer"
+#export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-software-rasterizer"
 
 # Navigate to your .venv project folder and start the app
 # Note: Your folder may be different than /home/pi. Check
@@ -93,7 +93,7 @@ source .venv/bin/activate
 sleep 5
 
 # Start the Chromium browser window
-chromium-browser --kiosk --incognito --app=http://localhost:8000
+chromium --kiosk --noerrdialogs --incognito --disable-infobars --no-first-run --disable-gpu --disable-sync --password-store=basic --incognito 'http://localhost:8000'
 ```
 
 * Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
