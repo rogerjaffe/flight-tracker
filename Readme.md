@@ -117,7 +117,7 @@ From Raspberry Pi Connect open up a remote terminal and run the following comman
 
 ```bash
 git clone https://github.com/rogerjaffe/flight-tracker-py-web.git
-cd flight-tracker
+cd flight-tracker/server
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
