@@ -87,13 +87,13 @@ sleep 5
 # the path if there's a problem starting the application.
 cd /home/pi/flight-tracker/server
 source .venv/bin/activate
-./start.sh &
+uvicorn main:app --port 8000 &
 
 # Wait briefly for the server to start
 sleep 5
 
 # Start the Chromium browser window
-chromium --kiosk --noerrdialogs --incognito --disable-infobars --no-first-run --disable-gpu --disable-sync --password-store=basic --incognito 'http://localhost:8000'
+chromium --kiosk --noerrdialogs --disable-infobars --no-first-run --disable-gpu --disable-sync --password-store=basic --incognito --ozone-platform=wayland 'http://localhost:8000' &
 ```
 
 * Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
@@ -101,7 +101,7 @@ chromium --kiosk --noerrdialogs --incognito --disable-infobars --no-first-run --
 
 ### Set up the user configuration
 
-* Open the `~/flight-tracker-py-web/config.ini` file in the project root
+* Open the `~/flight-tracker-py-web/server/config.py` file in the project root
 * In the [user] section set your latitude and longitude.
 * Set the view radius (in km). You may need to adjust the radius depending on the amount of airplane traffic in your
   area. Busier airspace should have a smaller radius to avoid overloading the source API. If you find that flights are
@@ -109,7 +109,7 @@ chromium --kiosk --noerrdialogs --incognito --disable-infobars --no-first-run --
 
 ### Set up app filters
 
-* Staying in `config.ini` find the [app] section. You can adjust the following filter values (`True` or `False`).
+* Staying in `config.py` find the [app] section. You can adjust the following filter values (`True` or `False`).
     * `airlines_only`: When true only flights whose callsigns follow a `XXXNNNN` pattern will be shown
     * `has_position`: Flights that report a lat/lon position will be shown
     * `on_ground`: When False flights on the ground will be not be shown

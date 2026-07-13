@@ -32,6 +32,13 @@ class ADSBServer:
 
 
 user_config = UserConfig(lat=32.800016, lon=-117.052769, radius=60)
+
+# Enable the ADSB servers with is_enabled=True.
+#
+# airplanes_live_server is a public server, but do not change
+# the interval due to the API's rate limitation
+#
+# The others are local ADSB receives, hence the local network IP address
 airplanes_live_server = ADSBServer(
   server_number=0,
   name="airplanes.live",
