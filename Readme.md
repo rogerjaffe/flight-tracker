@@ -86,9 +86,9 @@ export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-software-rasterizer"
 # Navigate to your .venv project folder and start the app
 # Note: Your folder may be different than /home/pi. Check
 # the path if there's a problem starting the application.
-cd /home/pi/flight-tracker-py-web
+cd /home/pi/flight-tracker
 source .venv/bin/activate
-python .
+PYTHONUNBUFFERED=1 uvicorn main:app --port 8000
 ```
 
 * Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
