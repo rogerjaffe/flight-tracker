@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Tell Tailwind: `dark:` variants activate when an ancestor has class="dark" */
+@custom-variant dark (&:where(.dark, .dark *));
