@@ -56,7 +56,7 @@ const InfoPanel = () => {
       {/* Row 2: Occupies vertical space but forces data items flush into a tight single-spaced index stack */}
       <div class="flex-1 pb-3 flex flex-col justify-start font-sans rounded-none overflow-y-auto">
         <div class="flex justify-between border-b border-gray-300 py-0.5 pl-1 pr-1">
-          <span class="font-bold">Number:</span>
+          <span class="font-bold">Flight number:</span>
           <span class="px-1 rounded-none">
             {flightInfo["identification.callsign"].substring(3)}
           </span>

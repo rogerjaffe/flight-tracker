@@ -62,20 +62,20 @@ const FlightList = () => {
                 >
                   {/* Left Wing Cell Metrics */}
                   <td
-                    class={`pl-2 pr-2 font-bold text-center ${leftIsHighlight}`}
+                    class={`pl-2 pr-2 pt-1 font-bold text-center ${leftIsHighlight}`}
                     onClick={flightClicked(leftItem.hex)}
                   >
                     {leftItem.callsign}
                   </td>
                   <td
-                    class={`pl-2 pr-2 text-center ${leftIsHighlight}`}
+                    class={`pl-2 pr-2 pt-1 text-center ${leftIsHighlight}`}
                     onClick={flightClicked(leftItem.hex)}
                   >
                     {leftItem.origin} <span>{ARROWS.right}</span>{" "}
                     {leftItem.destination ? leftItem.destination : "---"}
                   </td>
                   <td
-                    class={`pl-2 pr-2 text-right ${leftIsHighlight}`}
+                    class={`pl-2 pr-2 pt-1 text-right ${leftIsHighlight}`}
                     onClick={flightClicked(leftItem.hex)}
                   >
                     <ValueWithArrow
@@ -86,7 +86,7 @@ const FlightList = () => {
                     />
                   </td>
                   <td
-                    class={`pl-2 pr-2 text-right border-r ${leftIsHighlight}`}
+                    class={`pl-2 pr-2 pt-1 text-right border-r ${leftIsHighlight}`}
                     onClick={flightClicked(leftItem.hex)}
                   >
                     <ValueWithArrow
@@ -101,20 +101,20 @@ const FlightList = () => {
                   {rightItem ? (
                     <>
                       <td
-                        class={`pl-2 pr-2 font-bold text-center ${rightIsHighlight}`}
+                        class={`pl-2 pr-2 pt-1 font-bold text-center ${rightIsHighlight}`}
                         onClick={flightClicked(rightItem.hex)}
                       >
                         {rightItem.callsign}
                       </td>
                       <td
-                        class={`pl-2 pr-2 text-center ${rightIsHighlight}`}
+                        class={`pl-2 pr-2 pt-1 text-center ${rightIsHighlight}`}
                         onClick={flightClicked(rightItem.hex)}
                       >
                         {rightItem.origin} <span>{ARROWS.right}</span>{" "}
                         {rightItem.destination ? rightItem.destination : "---"}
                       </td>
                       <td
-                        class={`pl-2 pr-2 text-right ${rightIsHighlight}`}
+                        class={`pl-2 pr-2 pt-1 text-right ${rightIsHighlight}`}
                         onClick={flightClicked(rightItem.hex)}
                       >
                         <ValueWithArrow
@@ -125,7 +125,7 @@ const FlightList = () => {
                         />
                       </td>
                       <td
-                        class={`pl-2 pr-2 text-right ${rightIsHighlight}`}
+                        class={`pl-2 pr-2 pt-1 text-right ${rightIsHighlight}`}
                         onClick={flightClicked(rightItem.hex)}
                       >
                         <ValueWithArrow
@@ -138,10 +138,10 @@ const FlightList = () => {
                     </>
                   ) : (
                     <>
-                      <td class="pl-2 pr-2"></td>
-                      <td class="p-1"></td>
-                      <td class="p-1"></td>
-                      <td class="p-1"></td>
+                      <td class="pl-1 pr-1 pt-1 "></td>
+                      <td class="pl-1 pr-1 pt-1"></td>
+                      <td class="pl-1 pr-1 pt-1"></td>
+                      <td class="pl-1 pr-1 pt-1"></td>
                     </>
                   )}
                 </tr>,
