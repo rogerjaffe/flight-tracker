@@ -32,6 +32,7 @@ export type WorkerMessageType =
   | "FAST_UPDATE"
   | "SLOW_UPDATE"
   | "CONFIG"
+  | "DARKMODE"
   | "ERROR";
 
 export interface ADSBUpdateResponse {

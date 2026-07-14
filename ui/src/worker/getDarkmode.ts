@@ -10,8 +10,8 @@ export const getDarkmode = async (ctx: DedicatedWorkerGlobalScope) => {
   } catch (err) {
     ctx.postMessage({
       type: "ERROR",
-      error: "Failed to fetch configuration",
-      origin: "CONFIG",
+      error: "Failed to fetch darkmode",
+      origin: "DARKMODE",
     } as WorkerResponse);
     return { error: true };
   }

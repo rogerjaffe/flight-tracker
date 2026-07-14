@@ -35,69 +35,45 @@ models and I'll update this README.
     * Scroll down to the bottom and click on the "Display" section
     * Turn off the "Show Virtual Keyboard" option
 
-### Raspberry Pi autostart configuration
+### Disable screen blanking and virtual keyboard
 
-Now we need to configure the Pi to start the application in kiosk mode, hiding the menu bar, task bar, and opening a
-frameless Chromium browser window. Follow these instructions
+Open a terminal window and run `sudo raspi-config`
+    * Select "Display Options"
+    * Select "Screen Blanking"
+    * Select "No"
+    * Select "OK"
+    * Select "Display Options"
+    * Select "On screen keyboard"
+    * Select "Always off"
+    * Select "OK"
 
-    * From the terminal open a nano editor `sudo nano ~/.config/labwc/autostart`. Copy / paste this code. If you defined
-      a different user than the default `pi` change the folder appropriately.
+### Create an autostart script
 
-```bash
-#!/bin/bash
-
-# Trixie Wayland Kiosk Autostart File
-# Start with a log file
-/home/pi/start_kiosk.sh > /home/pi/kiosk.log 2>&1 &
-```
-
-* Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
-* Make the script executable `sudo chmod +x ~/.config/labwc/autostart`.
-* If you get a WAYLAND_DISPLAY error use the command `ls -l /run/user/$UID/wayland-*` to see the number of the display.
-* If you changed the username from the default `pi` you will need to change the `cd` line in the start_kiosk.sh file.
-
-### Set up the Pi hardware to run the application subject to the Pi 3B+ hardware requirements
-
-From a terminal open a new nano editor `sudo nano ~/start_kiosk.sh`. Copy / paste this code:
+2. Open a terminal window and enter `nano ~/start_dashboard.sh`.  Copy / paste this code and save the file:
 
 ```bash
 #!/bin/bash
-# If there is a problem with the EGL driver use the following command
-# to identify the display name
-#
-# ls -la /run/user/1000/wayland-* to see the display name
-#
-# then change the export WAYLAND_DISPLAY= line below to match
-# Wait briefly for Trixie's graphics socket to settle on boot
 
-sleep 5
+# Start the Python server in the background
+cd ~/flight-tracker/server
+source venv/bin/activate
+uvicorn main:app --port 8000 >> server.log 2>&1 &
 
-# Define the Wayland Display requirements
+# Wait 10 seconds for your backend data to serialize
+sleep 10
 
-#export XDG_RUNTIME_DIR=/run/user/$(id -u)
-#export WAYLAND_DISPLAY=wayland-0 # Adjust this if your display name is different
-#export QT_QPA_PLATFORM=wayland
-
-# Fix the EGL driver for the Raspberry Pi 3B+
-
-#export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-software-rasterizer"
-
-# Navigate to your .venv project folder and start the app
-# Note: Your folder may be different than /home/pi. Check
-# the path if there's a problem starting the application.
-cd /home/pi/flight-tracker/server
-source .venv/bin/activate
-uvicorn main:app --port 8000 &
-
-# Wait briefly for the server to start
-sleep 5
-
-# Start the Chromium browser window
+# Launch Chromium in Wayland kiosk mode pointing to your Preact app
 chromium --kiosk --noerrdialogs --disable-infobars --no-first-run --disable-gpu --disable-sync --password-store=basic --incognito --ozone-platform=wayland 'http://localhost:8000' &
 ```
 
-* Save and exit the nano editor by pressing `Ctrl+X` and then `Y` to save the file and `Enter` to confirm.
-* Make this script executable by running `sudo chmod +x ~/start_kiosk.sh` from the terminal.
+3. Make the script executable by running `sudo chmod +x ~/start_dashboard.sh` from the terminal.
+
+4. Check to see if there is a folder at `~/.config/labwc`.  If there is, continue to the next step.  If not, then create this folder
+
+5. Open a terminal window and run `sudo nano ~/.config/labwc/autostart`.
+
+6. Add `/home/pi/start_dashboard.sh &` at the bottom of this file
+
 
 ### Set up the user configuration
 
@@ -123,15 +99,15 @@ From Raspberry Pi Connect open up a remote terminal and run the following comman
 ```bash
 git clone https://github.com/rogerjaffe/flight-tracker.git
 cd flight-tracker/server
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ### Test the full application and autostart
 
 * Navigate to the root folder `cd ~`
-* Start the application by running `sudo start_kiosk.sh` from the terminal.
+* Start the application by running `sudo start_dashboard.sh` from the terminal.
 * If everything worked correctly, you should see a Chromium window open up with no menu or task bar and no Chromium
   title bar.
 * When the application is running you won't be able to close the app or run other applications. You can open a terminal

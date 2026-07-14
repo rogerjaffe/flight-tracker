@@ -3,9 +3,11 @@ import OriginDestinationCity from "./OriginDestinationCity.tsx";
 import { useMemo } from "preact/hooks";
 import { calculateDistance } from "../../../utilities/calculateDistance.ts";
 import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
+import {appStore} from "../../../store.ts";
 
 const Middle = () => {
   const { flightInfo, realTime } = useFlightInfo();
+  const displayContent = appStore.displayContent;
 
   const dxs = useMemo(() => {
     const oLat = flightInfo["airport.origin.position.latitude"];
@@ -20,6 +22,14 @@ const Middle = () => {
     const pct = totalDx === 0 ? 0 : Math.round((oDx / totalDx) * 100);
     return { oDx, dDx, pct };
   }, [flightInfo, realTime ?? null]);
+
+  const nextViewClick = () => {
+    if (displayContent.value === 'flight') {
+      displayContent.value = 'map';
+    } else if (displayContent.value === 'map') {
+      displayContent.value = 'flight';
+    }
+  }
 
   // Generate the progress bar
   const pb = useMemo(() => {
@@ -71,7 +81,7 @@ const Middle = () => {
           <OriginDestinationIata isOrigin={true} />
         </div>
         {/* Col 2: Arrow Character Only Container */}
-        <div class="w-10 flex items-center justify-center text-5xl font-bold rounded-none">
+        <div class="w-10 flex items-center justify-center text-5xl font-bold rounded-none" onClick={nextViewClick}>
           ▶
         </div>
         {/* Col 3: Equal Width Right */}

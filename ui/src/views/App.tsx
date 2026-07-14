@@ -1,10 +1,13 @@
 import { FlightInfoProvider } from "../providers/FlightInfoProvider";
-import FlightList from "./FlightList";
 import InfoPanel from "./InfoPanel";
 import TopRow from "./TopRow";
 import "./App.css";
+import MapTrack from "./MapTrack";
+import {appStore} from "../store.ts";
+import FlightList from "./FlightList";
 
 export function App() {
+  const displayContent = appStore.displayContent.value
   return (
     <FlightInfoProvider>
       <div class="w-[1024px] h-[600px] dark:text-white select-none p-0 box-border flex flex-col overflow-hidden border-black dark:border-white border-1">
@@ -15,7 +18,12 @@ export function App() {
             {/* ROW 1 (Takes up 2/5 -> 40% height of full layout) */}
             <TopRow />
             {/* ROW 2 (Takes up 3/5 -> 60% height of full layout) */}
-            <FlightList />
+            {
+              displayContent === "flight" ? <FlightList /> : null
+            }
+            {
+              displayContent === 'map' ? <MapTrack /> : null
+            }
           </div>
           <InfoPanel />
         </div>

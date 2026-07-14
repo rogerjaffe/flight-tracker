@@ -20,18 +20,18 @@ const FlightList = () => {
     <div class="h-[70%] w-full rounded-none overflow-y-auto relative">
       <table class="w-full text-left border-collapse table-fixed">
         {/* STICKY STACKED DUAL-HEADER */}
-        <thead class="sticky top-0 text-sm font-bold uppercase tracking-wider z-20 shadow-sm bg-gray-200">
-          <tr class="border-b border-gray-300">
+        <thead class="sticky top-0 text-sm font-bold uppercase tracking-wider z-20 shadow-sm ">
+          <tr class="border-b border-gray-300 dark:border-white bg-gray-200 dark:bg-gray-800">
             {/* Left Side Header Blocks */}
             <th class="pl-2 pr-2 w-[14%] text-center">Flight</th>
-            <th class="pl-2 pr-2 w-[16%] text-center">From/To</th>
-            <th class="pl-2 pr-2 w-[10%] text-center">Alt</th>
+            <th class="pl-2 pr-2 w-[14%] text-center">From/To</th>
+            <th class="pl-2 pr-2 w-[12%] text-center">Alt</th>
             <th class="pl-2 pr-2 w-[10%] border-r text-center">Speed</th>
 
             {/* Right Side Header Blocks (Repeated) */}
             <th class="pl-2 pr-2 w-[14%] text-center">Flight</th>
-            <th class="pl-2 pr-2 w-[16%] text-center">From/To</th>
-            <th class="pl-2 pr-2 w-[10%] text-center">Alt</th>
+            <th class="pl-2 pr-2 w-[14%] text-center">From/To</th>
+            <th class="pl-2 pr-2 w-[12%] text-center">Alt</th>
             <th class="pl-2 pr-2 w-[10%] text-center">Speed</th>
           </tr>
         </thead>
