@@ -17,6 +17,8 @@ export interface AppConfig {
   get_dark_mode_interval: number;
   clean_interval: number;
   flight_aware_flight_lookup: string;
+  flag_url: string;
+  flag_url_ext: string;
 }
 
 export interface ADSBServer {

@@ -2,57 +2,22 @@ import type { ArrowDirection, Direction } from "../types/Direction.ts";
 
 export const ARROWS = { up: "▲", right: "▶", down: "▼", left: "◀" };
 
-export const getArrow = (
-  arrowDirection: ArrowDirection,
-  trend: Direction,
-  precede: boolean = false,
-) => {
-  const pad = precede ? "pr-1" : "pl-1";
+export const getArrow = (arrowDirection: ArrowDirection, trend: Direction) => {
   if (arrowDirection === "up-down") {
     if (trend === "inc") {
-      return (
-        <span class={`inline-flex items-center justify-center ${pad} ${trend}`}>
-          {ARROWS.up}
-        </span>
-      );
+      return ARROWS.up;
     } else if (trend === "dec") {
-      return (
-        <span class={`inline-flex items-center justify-center ${pad} ${trend}`}>
-          {ARROWS.down}
-        </span>
-      );
+      return ARROWS.down;
     } else {
-      return (
-        <span class={`inline-flex items-center justify-center ${pad} ${trend}`}>
-          &nbsp;
-        </span>
-      );
+      return "";
     }
   } else if (arrowDirection === "left-right") {
     if (trend === "inc") {
-      return (
-        <span class={`inline-flex items-center justify-center ${pad} ${trend}`}>
-          {ARROWS.right}
-        </span>
-      );
+      return ARROWS.right;
     } else if (trend === "dec") {
-      return (
-        <span
-          class={`inline-flex items-center justify-center ${pad} ${trend}`}
-          style={{ width: "15px" }}
-        >
-          {ARROWS.left}
-        </span>
-      );
+      return ARROWS.left;
     } else {
-      return (
-        <span
-          class={`inline-flex items-center justify-center ${pad} ${trend}`}
-          style={{ width: "15px" }}
-        >
-          &nbsp;
-        </span>
-      );
+      return "";
     }
   }
 };

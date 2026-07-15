@@ -1,4 +1,4 @@
-import { useFlightInfo } from "../providers/FlightInfoProvider.tsx";
+import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 import SecToHHMMSS from "./SecToHHMMSS.tsx";
 
 const LateEarly = () => {

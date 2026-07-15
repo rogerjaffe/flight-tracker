@@ -5,6 +5,10 @@
   }
 }
 
+td {
+  font-variant-numeric: tabular-nums;
+}
+
 html,
 body {
   font-family: "Roboto", "sans-serif";
@@ -24,4 +28,17 @@ a:hover {
 
 .dec {
   color: red;
+}
+
+.direction-arrow {
+  display: inline-block;
+  width: 20px;
+}
+
+.up-down {
+  font-size: 11px;
+}
+
+.left-right {
+  font-size: 10px;
 }

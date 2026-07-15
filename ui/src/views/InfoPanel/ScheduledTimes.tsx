@@ -1,6 +1,6 @@
 import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 import { Fragment } from "preact";
-import Time from "../../utilities/Time.tsx";
+import Time from "../helpers/Time.tsx";
 
 const ScheduledTimes = ({ showLate = false }: { showLate: boolean }) => {
   const { flightInfo } = useFlightInfo();

@@ -17,6 +17,7 @@ export const appStore: AppState = {
   displayRotate: signal(false),
   displayRotateInterval: signal(30),
   darkmode: signal(false),
+  darkmodeOverride: signal(false),
   config: signal(null),
   worker: signal<Worker | null>(null),
   errorMessage: signal(null),

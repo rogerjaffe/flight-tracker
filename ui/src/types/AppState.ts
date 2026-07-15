@@ -9,6 +9,7 @@ export interface AppState {
   displayRotate: Signal<boolean>;
   displayRotateInterval: Signal<number>;
   darkmode: Signal<boolean>;
+  darkmodeOverride: Signal<boolean>;
   config: Signal<Config | null>;
   worker: Signal<Worker | null>;
   // isMenuOpen: Signal<boolean>;

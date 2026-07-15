@@ -1,4 +1,4 @@
-import { formatTime } from "./formatTime.ts";
+import { formatTime } from "../../utilities/formatTime.ts";
 
 const Time = ({
   time,

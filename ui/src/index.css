@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@utility dynamic-nums {
+  font-variant-numeric: tabular-nums;
+}
+
 /* Tell Tailwind: `dark:` variants activate when an ancestor has class="dark" */
 @custom-variant dark (&:where(.dark, .dark *));

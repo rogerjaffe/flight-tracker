@@ -70,7 +70,7 @@ ctx.onmessage = async (e: MessageEvent<WorkerRequest>) => {
         getDarkmode(ctx);
       },
       // 5000,
-      (config?.app.get_dark_mode_interval ?? 60) * 60 * 1000,
+      (config?.app.get_dark_mode_interval ?? 10) * 60 * 1000,
     );
   }
 };

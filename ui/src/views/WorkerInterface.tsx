@@ -27,8 +27,10 @@ export function WorkerInterface() {
       } else if (response.type === "FLIGHT_LIST") {
         dashboardStore.flightList.value = response.data;
       } else if (response.type === "FLIGHT_TO_DISPLAY") {
-        dashboardStore.realTime.value = response.data.realTime;
-        dashboardStore.flightInfo.value = response.data.flightInfo;
+        if (response.data) {
+          dashboardStore.realTime.value = response.data.realTime;
+          dashboardStore.flightInfo.value = response.data.flightInfo;
+        }
       } else if (response.type === "DARKMODE") {
         appStore.darkmode.value = response.data;
       } else if (response.type === "ERROR") {

@@ -168,6 +168,7 @@ export class Store {
     const filtered = adsbList.filter((adsb) => {
       if (!adsb.flight) return false;
       if (adsb.hex.startsWith("~")) return false;
+      if (adsb.alt_baro + "" === "ground") return false;
       return adsb.flight.trim().match(regex);
     });
     filtered.forEach((adsb) => {

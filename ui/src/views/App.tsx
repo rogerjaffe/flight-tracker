@@ -1,13 +1,24 @@
-import { FlightInfoProvider } from "../providers/FlightInfoProvider";
 import InfoPanel from "./InfoPanel";
 import TopRow from "./TopRow";
-import "./App.css";
 import MapTrack from "./MapTrack";
-import {appStore} from "../store.ts";
 import FlightList from "./FlightList";
+import useInterval from "../hooks/useInterval.ts";
+import { FlightInfoProvider } from "../providers/FlightInfoProvider";
+import { appStore } from "../store.ts";
+import "./App.css";
 
 export function App() {
-  const displayContent = appStore.displayContent.value
+  const displayContent = appStore.displayContent.value;
+
+  const switchDisplay = () => {
+    if (appStore.displayRotate.value) {
+      appStore.displayContent.value =
+        appStore.displayContent.value === "flight" ? "map" : "flight";
+    }
+  };
+
+  useInterval(switchDisplay, appStore.displayRotateInterval.value);
+
   return (
     <FlightInfoProvider>
       <div class="w-[1024px] h-[600px] dark:text-white select-none p-0 box-border flex flex-col overflow-hidden border-black dark:border-white border-1">
@@ -18,12 +29,8 @@ export function App() {
             {/* ROW 1 (Takes up 2/5 -> 40% height of full layout) */}
             <TopRow />
             {/* ROW 2 (Takes up 3/5 -> 60% height of full layout) */}
-            {
-              displayContent === "flight" ? <FlightList /> : null
-            }
-            {
-              displayContent === 'map' ? <MapTrack /> : null
-            }
+            {displayContent === "flight" ? <FlightList /> : null}
+            {displayContent === "map" ? <MapTrack /> : null}
           </div>
           <InfoPanel />
         </div>
