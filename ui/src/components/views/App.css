@@ -1,0 +1,70 @@
+/* Container background matching the dark theme */
+@media (prefers-color-scheme: dark) {
+  .dark .leaflet-container {
+    background: #242424 !important;
+  }
+}
+
+td {
+  font-variant-numeric: tabular-nums;
+}
+
+html,
+body {
+  font-family: "Roboto", "sans-serif";
+}
+
+a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+a:hover {
+  color: purple;
+}
+
+.inc {
+  color: green;
+}
+
+.dec {
+  color: red;
+}
+
+.direction-arrow {
+  display: inline-block;
+  width: 20px;
+}
+
+.up-down {
+  font-size: 11px;
+}
+
+.left-right {
+  font-size: 10px;
+}
+
+.ft-bg-progress-bar {
+  background-color: var(--color-gray-400);
+}
+
+.ft-progress-bar {
+  background-color: var(--color-yellow-400);
+}
+
+.ft-button {
+  color: var(--color-white);
+  background-color: var(--color-sky-900);
+}
+.ft-button:hover {
+  background-color: var(--color-sky-700);
+  cursor: pointer;
+}
+.ft-button:active {
+  background-color: var(--color-sky-950);
+}
+.ft-button:focus {
+  outline: 2px solid var(--color-sky-900);
+}
+.ft-bg-flight-list-header {
+  background-color: var(--color-gray-300);
+}

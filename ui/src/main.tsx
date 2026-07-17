@@ -1,5 +1,5 @@
 import { render } from "preact";
-import { WorkerInterface } from "./views/WorkerInterface.tsx";
+import { WorkerInterface } from "./components/views/WorkerInterface.tsx";
 import "./theme";
 import "./index.css";
 

@@ -18,7 +18,7 @@ flightaware_server = ADSBServer(
   data_path="aircraft",
   interval=1,
   stale_age=60,
-  is_enabled=False)
+  is_enabled=True)
 piaware_server = ADSBServer(
   server_number=2,
   name="piAware",
@@ -37,7 +37,7 @@ airplanes_live_server = ADSBServer(
   data_path="ac",
   interval=10,
   stale_age=60,
-  is_enabled=True)
+  is_enabled=False)
 
 
 def check_config(user: UserConfig, app: AppConfig):
