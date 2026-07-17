@@ -4,7 +4,7 @@ import AircraftCode from "./AircraftCode.tsx";
 
 const Left = () => {
   return (
-    <div class="w-[20%] h-full flex flex-col gap-0 border-r">
+    <div class="w-[20%] h-full flex flex-col gap-3 border-r">
       <AirlineLogo />
       <FlightIcao />
       <AircraftCode />

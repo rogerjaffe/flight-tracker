@@ -21,7 +21,7 @@ export function App() {
 
   return (
     <FlightInfoProvider>
-      <div class="w-[1024px] h-[600px] dark:text-white select-none p-0 box-border flex flex-col overflow-hidden border-black dark:border-white border-1">
+      <div class="w-[1024px] h-[600px] select-none p-0 box-border flex flex-col overflow-hidden border border-color">
         {/* FULL CANVAS: Splitting Left Content (6/8 or 75% width) and Right Section 3 (2/8 or 25% width) */}
         <div class="w-full h-full flex flex-row gap-0">
           {/* LEFT CONTAINER (Sections 1 & 2 + Row 2) */}

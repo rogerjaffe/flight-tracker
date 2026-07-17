@@ -1,9 +1,69 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
 
 @utility dynamic-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Tell Tailwind: `dark:` variants activate when an ancestor has class="dark" */
-@custom-variant dark (&:where(.dark, .dark *));
+/*!* Tell Tailwind: `dark:` variants activate when an ancestor has class="dark" *!*/
+/*@custom-variant dark (&:where(.dark, .dark *));*/
+
+/*!* 1️⃣ Define your Raw Theme Colors (Solves the "Cannot resolve" error) *!*/
+/*:root {*/
+/*  --bg-canvas: #faf9f6; !* Light Canvas *!*/
+/*  --bg-card: #ffffff; !* Light Cards *!*/
+/*  --bg-table-header: #f5f2eb;*/
+/*  --bg-table-cell: #ffffff;*/
+/*  --border-color: #eae4d9; !* Light Borders *!*/
+/*  --text-main: #1c1917; !* Light Text *!*/
+/*  --text-secondary: #78716c;*/
+/*  --bg-flight-list-header: #eeeeee;*/
+/*}*/
+
+/*!* 2️⃣ Swap the values when your Preact state injects the .dark class *!*/
+/*.dark {*/
+/*  --bg-canvas: #0b0f19; !* Light Canvas *!*/
+/*  --bg-card: #151d30; !* Light Cards *!*/
+/*  --bg-table-header: #1e2942;*/
+/*  --bg-table-cell: #151d30;*/
+/*  --border-color: #263554; !* Light Borders *!*/
+/*  --text-main: #aa6666; !* Light Text *!*/
+/*  --text-secondary: #94a3b8;*/
+/*  --bg-flight-list-header: blue;*/
+/*}*/
+
+/*!* 3️⃣ Map your variables to Tailwind v4 theme utility classes *!*/
+/*@theme {*/
+/*  --color-flight-canvas: var(--bg-canvas);*/
+/*  --color-flight-card: var(--bg-card);*/
+/*  --color-flight-border: var(--border-color);*/
+/*  --color-flight-text: var(--text-main);*/
+/*  --color-bg-flight-list-header: var(--bg-flight-list-header);*/
+/*}*/
+
+/*!* 4️⃣ Apply base global styles with smooth transition transitions *!*/
+/*@layer base {*/
+/*  body {*/
+/*    !*background-color: var(--bg-canvas);*!*/
+/*    !*color: var(--text-main);*!*/
+/*    transition:*/
+/*      background-color 300ms ease,*/
+/*      color 300ms ease;*/
+/*  }*/
+/*  .bg-flight-list-header {*/
+/*    background-color: var(--color-bg-flight-list-header);*/
+/*  }*/
+/*  *,*/
+/*  ::after,*/
+/*  ::before,*/
+/*  ::backdrop,*/
+/*  ::file-selector-button {*/
+/*    background-color: var(--bg-canvas);*/
+/*    color: var(--text-main);*/
+/*    border-color: var(--color-flight-border, currentColor);*/
+/*  }*/
+/*}*/

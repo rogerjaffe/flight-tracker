@@ -60,7 +60,7 @@ const InfoPanel = () => {
   return (
     <div class="w-[25%] h-full flex flex-col gap-0 border-l text-[14px]">
       {/* Row 1: Exactly 3/25 (12%) of entire canvas screen height */}
-      <div class="h-[10%] flex items-center border-gray-300 dark:border-white justify-center text-center p-2 rounded-none border-b">
+      <div class="h-[10%] flex items-center justify-center text-center p-2 rounded-none border-b">
         <h2 class="text-lg font-bold uppercase tracking-wide">
           {flightInfo["airline.name"]
             ?.replace("Airlines", "")
@@ -71,21 +71,21 @@ const InfoPanel = () => {
 
       {/* Row 2: Occupies vertical space but forces data items flush into a tight single-spaced index stack */}
       <div class="flex-1 pb-3 flex flex-col justify-start font-sans rounded-none overflow-y-auto">
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Flight number:</span>
           <span class="px-1 rounded-none">
             {flightInfo["identification.callsign"].substring(3)}
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Airline ICAO/IATA:</span>
           <span class="px-1 rounded-none">
             {`${flightInfo["airline.code.icao"]} / ${flightInfo["airline.code.iata"]}`}
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Altitude:</span>
           <span class="px-1 rounded-none">
             <ValueWithArrow
@@ -98,7 +98,7 @@ const InfoPanel = () => {
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Groundspeed:</span>
           <span class="px-1 rounded-none">
             <ValueWithArrow
@@ -111,7 +111,7 @@ const InfoPanel = () => {
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Heading:</span>
           <span class="px-1 rounded-none">
             <ValueWithArrow
@@ -125,20 +125,20 @@ const InfoPanel = () => {
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Squawk:</span>
           <span class="px-1 rounded-none">
             {realTime.squawk ? realTime.squawk : "---"}
           </span>
         </div>
 
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">ICAO:</span>
           <span class="px-1 rounded-none">
             {realTime.hex?.toUpperCase() ?? ""}
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Registration:</span>
           <span class="px-1 rounded-none">
             <img
@@ -149,35 +149,35 @@ const InfoPanel = () => {
             {flightInfo["aircraft.registration"]}
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Position:</span>
           <span class="px-1 rounded-none">{decodeLatLon(realTime.latLon)}</span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Aircraft:</span>
           <span class="px-1 rounded-none">
             {flightInfo["aircraft.model.text"]}
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Sched:</span>
           <span class="px-1 rounded-none">
             <ScheduledTimes showLate={false} />
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Act/ETA:</span>
           <span class="px-1 rounded-none">
             <EstimatedTimes showLate={true} />
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Late/Early:</span>
           <span class="px-1 rounded-none">
             <LateEarly />
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Scheduled duration:</span>
           <span class="px-1 rounded-none">
             <SecToHHMMSS
@@ -189,7 +189,7 @@ const InfoPanel = () => {
             />
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Actual duration:</span>
           <span class="px-1 rounded-none">
             <SecToHHMMSS
@@ -206,23 +206,23 @@ const InfoPanel = () => {
             />
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Distance:</span>
           <span class="px-1 rounded-none">{dx ? dx + " mi" : null}</span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Bearing:</span>
           <span class="px-1 rounded-none">
             {bearing ? bearing + "°" : ""} {direction}
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Observed:</span>
           <span class="px-1 rounded-none">
             {observed ? observed : "Unknown"}
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
           <span class="font-bold">Lookup link:</span>
           <span class="px-1 rounded-none">
             <a
@@ -234,7 +234,7 @@ const InfoPanel = () => {
             </a>
           </span>
         </div>
-        <div class="flex justify-between border-b border-gray-300 dark:border-white py-0.5 pl-1 pr-1 italic">
+        <div class="flex justify-between pt-3 pl-1 pr-1 italic">
           <button
             class="btn btn-xs bg-green-600 hover:bg-green-500"
             onClick={settingsClick}

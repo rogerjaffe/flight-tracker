@@ -30,19 +30,13 @@ const FlightListTable = ({
   return (
     <table
       id={"flightList" + idx}
-      class="w-full text-left tabular-nums text-[13px] border-collapse table-fixed border-none dark:bg-black"
+      class="w-full text-left tabular-nums text-[13px] border-collapse table-fixed border-none"
     >
       <thead class="sticky top-0 text-sm font-bold uppercase tracking-wider z-20 shadow-sm ">
-        <tr class="dynamic-nums border-b-2 border-gray-400 dark:border-white bg-gray-200 dark:bg-gray-800">
-          <th class="w-[30%] text-center border-r border-gray-400 dark:border-white pt-1 pb-1">
-            Flight
-          </th>
-          <th class="w-[30%] text-center border-r border-gray-400 dark:border-white pt-1 pb-1">
-            From/To
-          </th>
-          <th class="w-[20%] text-center border-r border-gray-400 dark:border-white pt-1 pb-1">
-            Alt
-          </th>
+        <tr class="dynamic-nums border-b-2  bg-flight-list-header">
+          <th class="w-[30%] text-center border-r  pt-1 pb-1">Flight</th>
+          <th class="w-[30%] text-center border-r  pt-1 pb-1">From/To</th>
+          <th class="w-[20%] text-center border-r  pt-1 pb-1">Alt</th>
           <th class="w-[20%] text-center pt-1 pb-1">Speed</th>
         </tr>
       </thead>
@@ -54,16 +48,17 @@ const FlightListTable = ({
             config?.app.airline_logo_url +
             item.callsign.substring(0, 3) +
             config?.app.airline_logo_url_ext;
-          const highlightClasses = "bg-yellow-300 dark:bg-yellow-600";
+          const highlightClasses =
+            "bg-yellow-300 dark:bg-yellow-600 text-black";
           const isHighlight =
             item.callsign === callsign ? highlightClasses : "";
           return (
             <tr
               key={item.callsign}
-              class={`transition-colors cursor-pointer border-b border-gray-400 dark:border-white ${isHighlight}`}
+              class={`transition-colors cursor-pointer border-b ${isHighlight ? highlightClasses : ""}`}
             >
               <td
-                class={`pt-0.5 pb-0.5 font-bold pr-1 border-r border-gray-400 dark:border-white flex items-center justify-center gap-1.5`}
+                class={`pt-0.5 pb-0.5 font-bold pr-1 border-r flex items-center justify-center gap-1.5`}
                 onClick={flightClicked(item.hex)}
               >
                 <img
@@ -74,7 +69,7 @@ const FlightListTable = ({
                 <span>{justify(item.callsign)}</span>
               </td>
               <td
-                class="pt-0.5 pb-0.5 text-center font-mono border-r border-gray-400 dark:border-white"
+                class="pt-0.5 pb-0.5 text-center font-mono border-r "
                 onClick={flightClicked(item.hex)}
               >
                 <span>{item.origin ? item.origin : "---"}</span>
@@ -93,7 +88,7 @@ const FlightListTable = ({
               </td>
               <td
                 onClick={flightClicked(item.hex)}
-                class="pt-0.5 pb-0.5 text-right border-r border-gray-400 dark:border-white"
+                class="pt-0.5 pb-0.5 text-right border-r "
               >
                 <ValueWithArrow
                   value={item.altitude}

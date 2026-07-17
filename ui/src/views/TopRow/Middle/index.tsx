@@ -3,7 +3,7 @@ import OriginDestinationCity from "./OriginDestinationCity.tsx";
 import { useMemo } from "preact/hooks";
 import { calculateDistance } from "../../../utilities/calculateDistance.ts";
 import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
-import {appStore} from "../../../store.ts";
+import { appStore } from "../../../store.ts";
 
 const Middle = () => {
   const { flightInfo, realTime } = useFlightInfo();
@@ -24,12 +24,12 @@ const Middle = () => {
   }, [flightInfo, realTime ?? null]);
 
   const nextViewClick = () => {
-    if (displayContent.value === 'flight') {
-      displayContent.value = 'map';
-    } else if (displayContent.value === 'map') {
-      displayContent.value = 'flight';
+    if (displayContent.value === "flight") {
+      displayContent.value = "map";
+    } else if (displayContent.value === "map") {
+      displayContent.value = "flight";
     }
-  }
+  };
 
   // Generate the progress bar
   const pb = useMemo(() => {
@@ -59,8 +59,8 @@ const Middle = () => {
               <span
                 class={`absolute top-1/2 -translate-y-1/2 text-[12px] font-black tracking-tighter whitespace-nowrap z-10 transition-all duration-300 ${
                   isGreaterThanTen
-                    ? "right-2 text-black" // Inside the bar, flush right
-                    : "left-[calc(100%+8px)] text-black" // Outside the bar, pushed right
+                    ? "right-2 text-black bg-yellow-400 " // Inside the bar, flush right
+                    : "left-[calc(100%+8px)] text-black bg-gray-400 " // Outside the bar, pushed right
                 }`}
               >
                 {percentage}%
@@ -81,7 +81,10 @@ const Middle = () => {
           <OriginDestinationIata isOrigin={true} />
         </div>
         {/* Col 2: Arrow Character Only Container */}
-        <div class="w-10 flex items-center justify-center text-5xl font-bold rounded-none" onClick={nextViewClick}>
+        <div
+          class="w-10 flex items-center justify-center text-5xl font-bold rounded-none"
+          onClick={nextViewClick}
+        >
           ▶
         </div>
         {/* Col 3: Equal Width Right */}
