@@ -6,7 +6,15 @@ import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 export function MapTrack() {
   const { realTime } = useFlightInfo();
   const latLon = realTime.latLon;
-  const points = latLon.map((p) => new LatLng(p.lat, p.lon));
+  const points = latLon
+    .map((p) => {
+      if (p && p.lat && p.lon) {
+        return new LatLng(p.lat, p.lon);
+      } else {
+        return null;
+      }
+    })
+    .filter((p) => p !== null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
 

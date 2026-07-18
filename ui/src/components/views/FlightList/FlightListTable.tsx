@@ -16,7 +16,6 @@ const FlightListTable = ({
   isRightSide?: boolean;
 }) => {
   const flightClicked = (hex: string) => () => {
-    console.log("clicked", hex);
     if (appStore.worker.value) {
       appStore.worker.value.postMessage({ action: "get_this_flight", hex });
     }

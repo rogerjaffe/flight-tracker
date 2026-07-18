@@ -55,7 +55,7 @@ const ProgressBar = () => {
         </div>
       );
     }
-  }, [dxs.pct ?? 0]);
+  }, [isNaN(dxs.pct) ? 0 : dxs.pct]);
 
   return <div class="col-span-full mt-3 pl-5 pr-5">{pb}</div>;
 };

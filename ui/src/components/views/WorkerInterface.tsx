@@ -18,7 +18,6 @@ export function WorkerInterface() {
 
     worker.onmessage = (event: MessageEvent<WorkerResponse>) => {
       const response = event.data;
-      console.log("UI", response);
       appStore.isLoading.value = false;
 
       if (response.type === "CONFIG") {
