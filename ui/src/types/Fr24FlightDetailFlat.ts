@@ -16,6 +16,8 @@ export interface Fr24FlightDetailFlat {
   "airline.code.icao": string;
   "airline.name": string;
   "airline.short": string;
+  "aircraft.image.url": string;
+  "aircraft.image.copyright": string;
   "airport.destination.code.iata": string;
   "airport.destination.code.icao": string;
   "airport.destination.name": string;

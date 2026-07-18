@@ -1,7 +1,8 @@
 import { Signal } from "@preact/signals";
 import type { Config } from "./Config.ts";
 
-export type DisplayContent = "flight" | "map" | "distance";
+export type DisplayContent =
+  "flight" | "map" | "distance" | "image" | "summary";
 
 export interface AppState {
   isLoading: Signal<boolean>;
@@ -12,9 +13,5 @@ export interface AppState {
   darkmodeOverride: Signal<boolean>;
   config: Signal<Config | null>;
   worker: Signal<Worker | null>;
-  // isMenuOpen: Signal<boolean>;
-  // activeTab: Signal<"feed" | "analytics">;
-  // theme: Signal<"light" | "dark">;
-  // isLoading: Signal<boolean>;
   errorMessage: Signal<string | null>;
 }

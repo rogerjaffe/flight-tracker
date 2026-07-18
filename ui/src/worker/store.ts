@@ -52,11 +52,21 @@ export class Store {
         hex: flightInfo["aircraft.hex"],
         callsign: flightInfo["identification.callsign"],
         origin: flightInfo["airport.origin.code.iata"],
+        originCity: flightInfo["airport.origin.position.region.city"],
         destination: flightInfo["airport.destination.code.iata"],
+        destinationCity: flightInfo["airport.destination.position.region.city"],
         altitude: realTime.alt_baro,
         altitudeDir: realTime.alt_baro_dir,
         speed: realTime.gs,
         speedDir: realTime.gs_dir,
+        lat:
+          realTime.latLon.length > 0
+            ? realTime.latLon[realTime.latLon.length - 1].lat
+            : 0,
+        lon:
+          realTime.latLon.length > 0
+            ? realTime.latLon[realTime.latLon.length - 1].lon
+            : 0,
       };
     });
   }

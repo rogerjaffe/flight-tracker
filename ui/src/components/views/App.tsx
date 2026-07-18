@@ -17,13 +17,16 @@ import Placeholder from "../helpers/Placeholder.tsx";
 import OriginDestinationDx from "./OriginDestination/OriginDestinationDx.tsx";
 import ProgressBar from "./ProgressBar.tsx";
 import { FlightInfoProvider } from "../providers/FlightInfoProvider";
+import DxList from "./DxList";
+import AircraftImage from "./AircraftImage";
 import "./App.css";
+import reducer from "../../reducer.ts";
+import Summary from "./Summary.tsx";
 
 export function App() {
   const switchDisplay = () => {
     if (appStore.displayRotate.value) {
-      appStore.displayContent.value =
-        appStore.displayContent.value === "flight" ? "map" : "flight";
+      reducer("NEXT_DISPLAY_MODE");
     }
   };
 
@@ -34,6 +37,16 @@ export function App() {
       return <FlightList />;
     } else if (appStore.displayContent.value === "map") {
       return <MapTrack />;
+    } else if (appStore.displayContent.value === "distance") {
+      return <DxList />;
+    } else if (appStore.displayContent.value === "image") {
+      return <AircraftImage />;
+    } else if (appStore.displayContent.value === "summary") {
+      return <Summary />;
+    } else {
+      return (
+        <div class="text-center mt-7 text-xl">Unknown display content</div>
+      );
     }
   }, [appStore.displayContent.value]);
 

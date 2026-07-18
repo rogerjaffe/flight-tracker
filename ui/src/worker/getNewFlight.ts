@@ -29,6 +29,16 @@ export async function getNewFlight(store: Store) {
     const liveFlight = thisFlight.result.response.data.find(
       (f) => f.status.live,
     );
+    let image = "";
+    let imageCopyright = "";
+    const imagesRoot = thisFlight.result.response.aircraftImages;
+    if (imagesRoot.length > 0) {
+      const images = imagesRoot[0].images.large;
+      if (images.length > 0) {
+        image = images[0].src;
+        imageCopyright = images[0].copyright;
+      }
+    }
 
     // If there's no live flight, then ignore it
     if (!liveFlight) {
@@ -38,6 +48,10 @@ export async function getNewFlight(store: Store) {
 
     // Flatten the flight details and add it to the store
     const flatFlight = flattenObject(liveFlight) as Fr24FlightDetailFlat;
+    if (image) {
+      flatFlight["aircraft.image.url"] = image;
+      flatFlight["aircraft.image.copyright"] = imageCopyright;
+    }
     store.addFlightDetail(flight.hex, flatFlight);
   } catch (err) {
     console.log("FlightRetrievalError");

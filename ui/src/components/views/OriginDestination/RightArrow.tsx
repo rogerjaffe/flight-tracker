@@ -1,14 +1,8 @@
-import { appStore } from "../../../store.ts";
+import reducer from "../../../reducer.ts";
 
 const RightArrow = () => {
-  const displayContent = appStore.displayContent;
-
   const nextViewClick = () => {
-    if (displayContent.value === "flight") {
-      displayContent.value = "map";
-    } else if (displayContent.value === "map") {
-      displayContent.value = "flight";
-    }
+    reducer("NEXT_DISPLAY_MODE");
   };
 
   return (

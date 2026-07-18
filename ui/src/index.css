@@ -29,7 +29,7 @@
   --ft-bg-button-hover: var(--color-sky-700);
   --ft-bg-button-active: var(--color-sky-950);
   --ft-bg-button-focus: var(--color-sky-900);
-  --ft-bg-flight-list-header: var(--color-white);
+  --ft-bg-flight-list-header: var(--color-gray-100);
   --ft-border-color: var(--color-gray-400);
   --ft-text-main: var(--color-black);
   --ft-text-airline: var(--color-black);
@@ -55,7 +55,7 @@
   --ft-bg-button-active: var(--color-sky-950);
   --ft-bg-button-focus: var(--color-sky-900);
   --ft-bg-flight-list-header: var(--color-slate-900);
-  --ft-border-color: var(--color-gray-400);
+  --ft-border-color: var(--color-gray-700);
   --ft-text-main: var(--color-slate-400);
   --ft-text-airline: var(--color-blue-500);
   --ft-text-late: var(--color-red-500);

@@ -1,7 +1,7 @@
 # Flight Tracker
 
 Load this flight tracker application on a Raspberry Pi to track aircraft within
-a radius around any location.
+a given radius around any location.
 
 ## Application architecture
 
@@ -138,3 +138,31 @@ pip install -r requirements.txt
 <p align="center">
   <img src="screenshots/ss2.png" width="500" alt="Image Description">
 </p>
+
+### Acknowledgements
+
+#### Inspiration for this project comes from these two Raspberry Pi projects:
+
+* [Version 1 Flight Tracker](https://github.com/ColinWaddell/FlightTracker?tab=readme-ov-file)
+* [Version 2: Flight tracker for an R-Pi and an RGB matrix](https://github.com/c0wsaysmoo/plane-tracker-rgb-pi)
+
+#### Open source libraries used in this project:
+##### Python
+* [Python](https://www.python.org/) for providing the back end framework
+* Also see the list in `server/requirements.txt`
+
+##### Typescript
+* [Preact](https://preactjs.com/) for providing the front end framework
+* [Tailwind CSS](https://tailwindcss.com/) for providing the CSS framework
+
+##### Raspberry Pi
+* [Chromium](https://www.chromium.org/) for providing the web browser engine
+* [Raspberry Pi](https://www.raspberrypi.org/) for providing the hardware platform
+* [Raspbian Trixie OS](https://www.raspberrypi.org/software/operating-systems/) for providing the operating system
+
+##### Real time data sources and images
+* [FlightAware](https://www.flightaware.com/) for providing the flight data source
+* [FlightRadar24](https://www.flightradar24.com/) for providing the airport data source
+* [JetPhotos](https://www.jetphotos.com/) for providing the aircraft images via FlightRadar24
+* [FlightStats](https://www.flightstats.com/) for providing the airline data source
+* [OpenSky](https://opensky-network.org/) for providing the position data source
