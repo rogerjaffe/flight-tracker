@@ -104,7 +104,7 @@ const InfoPanel = () => {
           </span>
         </div>
 
-        <div class="flex justify-between border-b py-0.5 pl-1 pr-1">
+        <div class="flex justify-between border-b py-1 pl-1 pr-1">
           <span class="font-bold">Groundspeed:</span>
           <span class="px-1 rounded-none">
             <ValueWithArrow
