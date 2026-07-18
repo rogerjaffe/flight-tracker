@@ -19,7 +19,11 @@ const ValueWithArrow = ({
   const strHTML = <span>{str}</span>;
   const arrow = getArrow(direction, trend);
   const arrowHTML = (
-    <span class={`${direction} ${trend} direction-arrow`}>{arrow}</span>
+    <span
+      class={`${direction ? "ft-" + direction : ""} ${trend ? "ft-" + trend : ""} direction-arrow`}
+    >
+      {arrow}
+    </span>
   );
   if (precede) {
     return (

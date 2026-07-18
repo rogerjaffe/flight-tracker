@@ -12,31 +12,55 @@
 /*!* Tell Tailwind: `dark:` variants activate when an ancestor has class="dark" *!*/
 /*@custom-variant dark (&:where(.dark, .dark *));*/
 
-/* 1️⃣ Define your Raw Theme Colors (Solves the "Cannot resolve" error) */
-/*:root {*/
-/*  --bg-flight-tracker: red;*/
-/*--bg-canvas: #faf9f6; !* Light Canvas *!*/
-/*--bg-card: #ffffff; !* Light Cards *!*/
-/*--bg-table-header: #f5f2eb;*/
-/*--bg-table-cell: #ffffff;*/
-/*--border-color: #eae4d9; !* Light Borders *!*/
-/*--text-main: #1c1917; !* Light Text *!*/
-/*--text-secondary: #78716c;*/
-/*--bg-flight-list-header: #eeeeee;*/
-/*}*/
+/*1️⃣ Define your Raw Theme Colors (Solves the "Cannot resolve" error) */
+:root {
+  --ft-bg-app: var(--color-gray-200);
+  --ft-bg-major-region: var(--color-white);
+  --ft-bg-highlight-class: var(--color-yellow-400);
+  --ft-color-highlight-class-text: var(--color-black);
+  --ft-color-a-link: #1a0dab;
+  --ft-color-a-link-hover: var(--color-purple-400);
+  --ft-color-inc: green;
+  --ft-color-dec: red;
+  --ft-bg-progress-bar: var(--color-gray-400);
+  --ft-fill-progress-bar: var(--color-yellow-400);
+  --ft-color-button: var(--color-white);
+  --ft-bg-button: var(--color-sky-900);
+  --ft-bg-button-hover: var(--color-sky-700);
+  --ft-bg-button-active: var(--color-sky-950);
+  --ft-bg-button-focus: var(--color-sky-900);
+  --ft-bg-flight-list-header: var(--color-white);
+  --ft-border-color: var(--color-gray-400);
+  --ft-text-main: var(--color-black);
+  --ft-text-airline: var(--color-black);
+  --ft-text-late: var(--color-red-500);
+  --ft-text-early: var(--color-green-600);
+}
 
 /* 2️⃣ Swap the values when your Preact state injects the .dark class */
-/*.dark {*/
-/*  --bg-flight-tracker: blue;*/
-/*--bg-canvas: #0b0f19; !* Light Canvas *!*/
-/*--bg-card: #151d30; !* Light Cards *!*/
-/*--bg-table-header: #1e2942;*/
-/*--bg-table-cell: #151d30;*/
-/*--border-color: #263554; !* Light Borders *!*/
-/*--text-main: #aa6666; !* Light Text *!*/
-/*--text-secondary: #94a3b8;*/
-/*--bg-flight-list-header: blue;*/
-/*}*/
+.dark {
+  --ft-bg-app: var(--color-slate-950);
+  --ft-bg-major-region: var(--color-slate-900);
+  --ft-bg-highlight-class: var(--color-yellow-500);
+  --ft-color-highlight-class-text: var(--color-black);
+  --ft-color-a-link: var(--color-blue-400);
+  --ft-color-a-link-hover: var(--color-blue-200);
+  --ft-color-inc: green;
+  --ft-color-dec: red;
+  --ft-bg-progress-bar: var(--color-gray-400);
+  --ft-fill-progress-bar: var(--color-yellow-400);
+  --ft-color-button: var(--color-white);
+  --ft-bg-button: var(--color-sky-900);
+  --ft-bg-button-hover: var(--color-sky-700);
+  --ft-bg-button-active: var(--color-sky-950);
+  --ft-bg-button-focus: var(--color-sky-900);
+  --ft-bg-flight-list-header: var(--color-slate-900);
+  --ft-border-color: var(--color-gray-400);
+  --ft-text-main: var(--color-slate-400);
+  --ft-text-airline: var(--color-blue-500);
+  --ft-text-late: var(--color-red-500);
+  --ft-text-early: var(--color-green-600);
+}
 
 /* 3️⃣ Map your variables to Tailwind v4 theme utility classes */
 /*@theme {*/
@@ -49,25 +73,26 @@
 /*}*/
 
 /*!* 4️⃣ Apply base global styles with smooth transition transitions *!*/
-/*@layer base {*/
-/*  body {*/
-/*    !*background-color: var(--bg-canvas);*!*/
-/*    !*color: var(--text-main);*!*/
-/*    transition:*/
-/*      background-color 300ms ease,*/
-/*      color 300ms ease;*/
-/*  }*/
-/*  .bg-flight-list-header {*/
-/*    background-color: var(--color-bg-flight-list-header);*/
-/*  }*/
-/*{*/
-/*  *,*/
-/*  ::after,*/
-/*  ::before,*/
-/*  ::backdrop,*/
-/*  ::file-selector-button {*/
-/*    ft-background: var(--bg-flight-tracker, currentColor);*/
-/*    !*color: var(--text-main);*!*/
-/*    !*border-color: var(--color-flight-border, currentColor);*!*/
-/*  }*/
-/*}*/
+@layer base {
+  body {
+    background-color: var(--ft-bg-app);
+    color: var(--ft-text-main);
+    transition:
+      background-color 300ms ease,
+      color 300ms ease;
+  }
+  .border,
+  .border-r,
+  .border-l,
+  .border-b,
+  .border-t,
+  .border-b-2,
+  .border-r-2 {
+    border-color: var(--ft-border-color);
+  }
+}
+
+.dark img {
+  filter: brightness(1.2) contrast(1.1)
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}

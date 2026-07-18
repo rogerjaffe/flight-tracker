@@ -55,8 +55,7 @@ const FlightListTable = ({
             config?.app.airline_logo_url +
             item.callsign.substring(0, 3) +
             config?.app.airline_logo_url_ext;
-          const highlightClasses =
-            "bg-yellow-300 dark:bg-yellow-600 text-black";
+          const highlightClasses = "ft-highlight-class";
           const isHighlight =
             item.callsign === callsign ? highlightClasses : "";
           return (

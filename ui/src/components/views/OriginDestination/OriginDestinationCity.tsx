@@ -1,5 +1,5 @@
 import { useMemo } from "preact/hooks";
-import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
+import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 
 const OriginDestinationCity = ({ isOrigin }: { isOrigin: boolean }) => {
   const { flightInfo } = useFlightInfo();

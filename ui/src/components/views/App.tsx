@@ -6,15 +6,15 @@ import FlightList from "./FlightList";
 import useInterval from "../../hooks/useInterval.ts";
 import MajorRegion from "../structure/MajorRegion.tsx";
 import MainApp from "../structure/MainApp.tsx";
-import AirlineLogo from "./TopRow/FlightIcon/AirlineLogo.tsx";
-import FlightIcao from "./TopRow/FlightIcon/FlightIcao.tsx";
-import AircraftCode from "./TopRow/FlightIcon/AircraftCode.tsx";
+import AirlineLogo from "./FlightIcon/AirlineLogo.tsx";
+import FlightIcao from "./FlightIcon/FlightIcao.tsx";
+import AircraftCode from "./FlightIcon/AircraftCode.tsx";
 import OriginDestination from "../structure/OriginDestination.tsx";
-import OriginDestinationCity from "./TopRow/Middle/OriginDestinationCity.tsx";
-import RightArrow from "./TopRow/Middle/RightArrow.tsx";
-import OriginDestinationIata from "./TopRow/Middle/OriginDestinationIata.tsx";
+import OriginDestinationCity from "./OriginDestination/OriginDestinationCity.tsx";
+import RightArrow from "./OriginDestination/RightArrow.tsx";
+import OriginDestinationIata from "./OriginDestination/OriginDestinationIata.tsx";
 import Placeholder from "../helpers/Placeholder.tsx";
-import OriginDestinationDx from "./TopRow/Middle/OriginDestinationDx.tsx";
+import OriginDestinationDx from "./OriginDestination/OriginDestinationDx.tsx";
 import ProgressBar from "./ProgressBar.tsx";
 import { FlightInfoProvider } from "../providers/FlightInfoProvider";
 import "./App.css";
@@ -39,21 +39,36 @@ export function App() {
 
   return (
     <FlightInfoProvider>
-      <MainApp height={600} width={1024} addlClasses="border bg-white">
+      <MainApp height={600} width={1024} addlClasses="border ft-bg">
         {/* TOP LEFT */}
-        <MajorRegion rowStart={1} rowEnd={8} colSpan={3} bgColor="bg-gray-200">
+        <MajorRegion
+          rowStart={1}
+          rowEnd={8}
+          colSpan={4}
+          bgColor="ft-bg-major-region"
+        >
           <AirlineLogo />
           <FlightIcao />
           <AircraftCode />
         </MajorRegion>
 
         {/* BOTTOM LEFT */}
-        <MajorRegion rowStart={8} rowEnd={24} colSpan={18}>
+        <MajorRegion
+          rowStart={8}
+          rowEnd={24}
+          colSpan={18}
+          bgColor="ft-bg-major-region"
+        >
           {allFlightsContent}
         </MajorRegion>
 
         {/* TOP MIDDLE */}
-        <MajorRegion rowStart={1} rowEnd={8} colSpan={15}>
+        <MajorRegion
+          rowStart={1}
+          rowEnd={8}
+          colSpan={14}
+          bgColor="ft-bg-major-region"
+        >
           {/* ORIGIN / DESTINATION IATA CODES */}
           <OriginDestination>
             <OriginDestinationIata isOrigin={true} />
@@ -80,7 +95,12 @@ export function App() {
         </MajorRegion>
 
         {/* TOP RIGHT */}
-        <MajorRegion rowStart={1} rowEnd={24} colSpan={6}>
+        <MajorRegion
+          rowStart={1}
+          rowEnd={24}
+          colSpan={9}
+          bgColor="ft-bg-major-region"
+        >
           <InfoPanel />
         </MajorRegion>
       </MainApp>

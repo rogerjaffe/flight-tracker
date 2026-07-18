@@ -1,6 +1,6 @@
-import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
+import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 import { useMemo } from "preact/hooks";
-import { calculateDistance } from "../../../../utilities/calculateDistance.ts";
+import { calculateDistance } from "../../../utilities/calculateDistance.ts";
 
 const OriginDestinationDx = ({ isOrigin }: { isOrigin: boolean }) => {
   const { flightInfo, realTime } = useFlightInfo();
@@ -19,7 +19,7 @@ const OriginDestinationDx = ({ isOrigin }: { isOrigin: boolean }) => {
 
   return (
     <div class="text-center">
-      {dx ? dx.toLocaleString() : 0}
+      {dx ? dx.toLocaleString() : ""}
       {" mi"}
     </div>
   );

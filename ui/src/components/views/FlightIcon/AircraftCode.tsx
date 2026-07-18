@@ -1,4 +1,4 @@
-import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
+import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 
 const AircraftCode = () => {
   const { flightInfo } = useFlightInfo();

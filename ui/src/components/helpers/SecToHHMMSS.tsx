@@ -14,8 +14,8 @@ function SecToHHMMSS({
   const hrStr = hr > 0 ? `${hr}h` : "";
 
   let compareClass = "";
-  if (withCompare && sec > compareWith) compareClass = "text-red-500";
-  if (withCompare && sec < compareWith) compareClass = "text-green-500";
+  if (withCompare && sec > compareWith) compareClass = "ft-text-late";
+  if (withCompare && sec < compareWith) compareClass = "ft-text-early";
 
   const min = Math.floor((sec - hr * 3600) / 60);
   let minStr = "";

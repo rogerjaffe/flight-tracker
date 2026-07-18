@@ -1,4 +1,4 @@
-import { appStore } from "../../../../store.ts";
+import { appStore } from "../../../store.ts";
 
 const RightArrow = () => {
   const displayContent = appStore.displayContent;
@@ -13,7 +13,7 @@ const RightArrow = () => {
 
   return (
     <div
-      class="flex items-center justify-center text-6xl font-bold cursor-pointer"
+      class="flex items-center justify-center text-5xl font-bold cursor-pointer mt-5 "
       onClick={nextViewClick}
     >
       ▶

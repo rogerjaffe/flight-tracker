@@ -39,13 +39,13 @@ const ProgressBar = () => {
             style={{ width: `${percentage}%` }}
           >
             {/* Main Filled progress element */}
-            <div class="absolute inset-0 ft-progress-bar rounded-l-2xl"></div>
+            <div class="absolute inset-0 ft-fill-progress-bar rounded-l-2xl"></div>
 
             {/* DYNAMIC TEXT PLACEMENT ENGINE */}
             <span
               class={`absolute top-1/2 -translate-y-1/2 text-[12px] font-black tracking-tighter whitespace-nowrap z-10 transition-all duration-300 ${
                 isGreaterThanTen
-                  ? "right-2 text-black ft-progress-bar " // Inside the bar, flush right
+                  ? "right-2 text-black ft-fill-progress-bar " // Inside the bar, flush right
                   : "left-[calc(100%+8px)] text-black ft-bg-progress-bar " // Outside the bar, pushed right
               }`}
             >

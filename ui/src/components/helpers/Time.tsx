@@ -16,9 +16,9 @@ const Time = ({
   const isEarly = showLate && time < compareWith;
   let statusClass = "";
   if (isLate) {
-    statusClass = "text-red-500";
+    statusClass = "ft-text-late";
   } else if (isEarly) {
-    statusClass = "text-green-500";
+    statusClass = "ft-text-early";
   }
   return <span class={statusClass}>{timeStr}</span>;
 };

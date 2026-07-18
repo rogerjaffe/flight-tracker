@@ -14,10 +14,10 @@ const LateEarly = () => {
   const arrVariant = estArr - scheduledArr;
   const depStr = SecToHHMMSS({ sec: Math.abs(depVariant), withSec: false });
   const depIsLateClass =
-    depVariant > 0 ? "text-red-500" : depVariant < 0 ? "text-green-500" : "";
+    depVariant > 0 ? "ft-text-late" : depVariant < 0 ? "ft-text-early" : "";
   const arrStr = SecToHHMMSS({ sec: Math.abs(arrVariant), withSec: false });
   const arrIsLateClass =
-    arrVariant > 0 ? "text-red-500" : arrVariant < 0 ? "text-green-500" : "";
+    arrVariant > 0 ? "ft-text-late" : arrVariant < 0 ? "ft-text-early" : "";
   return (
     <div className="flex gap-2">
       <div className={`${depIsLateClass}`}>{depStr}</div>

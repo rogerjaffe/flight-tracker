@@ -78,17 +78,12 @@ async def get_flight(reg: RegRoute):
 
 @app.post("/api/adsb")
 async def fetch_external_url(url: UrlRoute):
-  """
-  Fetches an external URL using curl_cffi to bypass advanced TLS fingerprints.
-  Example: /api/url?url=https://httpbin.org
-  """
   if not url.url.startswith(("http://", "https://")):
     raise HTTPException(status_code=400, detail="Invalid URL protocol. Use http or https.")
 
   try:
     # Use AsyncSession for non-blocking HTTP requests within FastAPI
     response = requests.get(url.url, timeout=5, impersonate='chrome146')
-    # response = await session.get(url, timeout=10.0)
 
     # Attempt to return raw JSON data if the target responds with JSON
     try:

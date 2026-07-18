@@ -5,66 +5,101 @@
   }
 }
 
-td {
-  font-variant-numeric: tabular-nums;
-}
-
 html,
 body {
   font-family: "Roboto", "sans-serif";
 }
 
-a {
-  color: #1a0dab;
-  text-decoration: underline;
-}
-a:hover {
-  color: purple;
-}
-
-.inc {
-  color: green;
-}
-
-.dec {
-  color: red;
+td {
+  font-variant-numeric: tabular-nums;
 }
 
 .direction-arrow {
+  width: 14px;
   display: inline-block;
-  width: 20px;
 }
 
-.up-down {
-  font-size: 11px;
+.airline-logo {
+  width: 140px;
+  height: 140px;
 }
 
-.left-right {
-  font-size: 10px;
+/* Custom flight-tracker classes prefixed with ft */
+.ft-bg {
+  background-color: var(--ft-bg-app);
+}
+
+.ft-bg-major-region {
+  background-color: var(--ft-bg-major-region);
+}
+
+.ft-highlight-class {
+  background-color: var(--ft-bg-highlight-class);
+  color: var(--ft-color-highlight-class-text);
+}
+
+.ft-a-link {
+  color: var(--ft-color-a-link);
+  text-decoration: underline;
+}
+
+.ft-a-link:hover {
+  color: var(--ft-color-a-link-hover);
+}
+
+.ft-inc {
+  color: var(--ft-color-inc);
+}
+
+.ft-dec {
+  color: var(--ft-color-dec);
 }
 
 .ft-bg-progress-bar {
-  background-color: var(--color-gray-400);
+  background-color: var(--ft-bg-progress-bar);
 }
 
-.ft-progress-bar {
-  background-color: var(--color-yellow-400);
+.ft-fill-progress-bar {
+  background-color: var(--ft-fill-progress-bar);
 }
 
 .ft-button {
-  color: var(--color-white);
-  background-color: var(--color-sky-900);
+  color: var(--ft-color-button);
+  background-color: var(--ft-bg-button);
 }
 .ft-button:hover {
-  background-color: var(--color-sky-700);
-  cursor: pointer;
+  background-color: var(--ft-bg-button-hover);
 }
 .ft-button:active {
-  background-color: var(--color-sky-950);
+  background-color: var(--ft-bg-button-active);
 }
 .ft-button:focus {
-  outline: 2px solid var(--color-sky-900);
+  outline: 2px solid var(--ft-bg-button-focus);
 }
 .ft-bg-flight-list-header {
-  background-color: var(--color-gray-300);
+  background-color: var(--ft-bg-flight-list-header);
+}
+
+.ft-up-down {
+  font-size: 11px;
+}
+
+.ft-left-right {
+  font-size: 10px;
+}
+
+.ft-bg-major-region {
+  background-color: var(--ft-bg-major-region);
+}
+
+.ft-text-airline {
+  color: var(--ft-text-airline);
+}
+
+.ft-text-late {
+  color: var(--ft-text-late);
+}
+
+.ft-text-early {
+  color: var(--ft-text-early);
 }

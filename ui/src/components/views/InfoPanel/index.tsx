@@ -72,7 +72,7 @@ const InfoPanel = () => {
 
   return (
     <div class="text-[13px]">
-      <div class="h-13.75 text-lg font-bold uppercase tracking-wide border-b">
+      <div class="h-14.5 text-lg font-bold uppercase tracking-wide border-b ft-text-airline">
         <FitText>{airlineName}</FitText>
       </div>
       {/* Row 2: Occupies vertical space but forces data items flush into a tight single-spaced index stack */}
@@ -87,7 +87,7 @@ const InfoPanel = () => {
         <InfoPanelItem>
           <span class="font-bold">Airline ICAO/IATA:</span>
           <span class="px-1 rounded-none">
-            {`${flightInfo["airline.code.icao"]} / ${flightInfo["airline.code.iata"]}`}
+            {`${flightInfo["airline.code.icao"] ?? "---"} / ${flightInfo["airline.code.iata"] ?? "---"}`}
           </span>
         </InfoPanelItem>
 
@@ -235,6 +235,7 @@ const InfoPanel = () => {
               href={faLookup + flightInfo["identification.callsign"]}
               target="_blank"
               rel="noreferrer noopener"
+              class="ft-a-link"
             >
               FlightAware
             </a>

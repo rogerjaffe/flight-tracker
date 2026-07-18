@@ -1,5 +1,5 @@
 import { useMemo } from "preact/hooks";
-import { useFlightInfo } from "../../../providers/FlightInfoProvider.tsx";
+import { useFlightInfo } from "../../providers/FlightInfoProvider.tsx";
 
 const OriginDestinationIata = ({ isOrigin }: { isOrigin: boolean }) => {
   const { flightInfo } = useFlightInfo();
@@ -15,7 +15,7 @@ const OriginDestinationIata = ({ isOrigin }: { isOrigin: boolean }) => {
   return (
     <div
       id={`${isOrigin ? "origin" : "destination"}-iata`}
-      className="text-8xl font-bold text-center"
+      className="text-7xl mt-4 font-bold text-center"
     >
       {code}
     </div>

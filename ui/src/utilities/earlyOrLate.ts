@@ -1,4 +1,4 @@
 const earlyOrLate = (time: number, compareTo: number) =>
-  time < compareTo ? "text-green-500" : "text-red-500";
+  time < compareTo ? "ft-text-early" : "ft-text-late";
 
 export default earlyOrLate;
