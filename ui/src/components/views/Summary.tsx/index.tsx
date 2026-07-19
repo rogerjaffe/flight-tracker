@@ -13,9 +13,11 @@ const Summary = () => {
 
   const origin = flightList.reduce(
     (acc, item) => {
-      const origin = `${item.origin} ${item.originCity}`;
-      if (origin) {
-        acc[origin] = (acc[origin] || 0) + 1;
+      if (item.origin && item.originCity) {
+        const origin = `${item.origin} ${item.originCity}`;
+        if (origin) {
+          acc[origin] = (acc[origin] || 0) + 1;
+        }
       }
       return acc;
     },
@@ -24,9 +26,11 @@ const Summary = () => {
 
   const dest = flightList.reduce(
     (acc, item) => {
-      const dest = `${item.destination} ${item.destinationCity}`;
-      if (dest) {
-        acc[dest] = (acc[dest] || 0) + 1;
+      if (item.destination && item.destinationCity) {
+        const dest = `${item.destination} ${item.destinationCity}`;
+        if (dest) {
+          acc[dest] = (acc[dest] || 0) + 1;
+        }
       }
       return acc;
     },
