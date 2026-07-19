@@ -10,6 +10,5 @@ export function cleanup(store: Store) {
   const staleTime = now - (config?.app.stale_age_seconds ?? 60) * 1000;
   const removeThese = store.filterFlights(filterFcn(staleTime));
   if (removeThese.length === 0) return;
-  console.log(`Removing ${removeThese.length} stale flights`);
   removeThese.forEach((flight) => store.removeFlight(flight.hex));
 }
