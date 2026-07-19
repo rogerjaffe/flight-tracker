@@ -8,9 +8,9 @@ from config_defaults import ADSBServer, UserConfig, AppConfig
 # radius.  I've had good luck at 60km
 user_config = UserConfig(lat=32.800016, lon=-117.052769, radius=60)
 
-# Enable the ADSB servers with is_enabled=True.
+# Enable the ADS-B servers with is_enabled=True.
 
-# Local ADSB receives, hence the local network IP address
+# Local ADS-B receivers, hence the local network IP address
 flightaware_server = ADSBServer(
   server_number=1,
   name="flightAware",
@@ -60,9 +60,11 @@ def check_config(user: UserConfig, app: AppConfig):
 class Config:
   def __init__(self, **kwargs):
     self.user = UserConfig(lat=32.800016, lon=-117.052769, radius=60)
+
+    # Customize other options here in the same fashion as in UserConfig above
     self.app = AppConfig()
 
-    # include all define ADSB servers here
+    # include all define ADS-B servers here
     self.adsb_servers = [airplanes_live_server, flightaware_server, piaware_server]
     check_config(self.user, self.app)
 
