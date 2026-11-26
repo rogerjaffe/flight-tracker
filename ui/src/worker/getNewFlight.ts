@@ -1,5 +1,5 @@
 import type { Store } from "./store.ts";
-import type { Fr24AircraftDetail } from "../types/Fr24AircraftDetail.ts";
+// import type { Fr24AircraftDetail } from "../types/Fr24AircraftDetail.ts";
 import { flattenObject } from "../utilities/flattenObject.ts";
 import type { Fr24FlightResponse } from "../types/Fr24FlightResponse.ts";
 import type { Fr24FlightDetailFlat } from "../types/Fr24FlightDetailFlat.ts";
@@ -8,21 +8,26 @@ import type { Fr24FlightDetailFlat } from "../types/Fr24FlightDetailFlat.ts";
 
 export async function getNewFlight(store: Store) {
   const flight = store.findNextFlightToRetrieve();
-  if (!flight) return;
+  if (!flight?.realTime) return;
   try {
     // Get the registration first
-    const regRes = await fetch(`http://localhost:8000/api/reg`, {
-      method: "POST",
-      body: JSON.stringify({ hex_code: flight.hex }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const aircraft = (await regRes.json()) as Fr24AircraftDetail;
-    const reg = aircraft.result.response.aircraft.data[0].registration;
+    // const regRes = await fetch(`http://localhost:8000/api/flight`, {
+    //   method: "POST",
+    //   body: JSON.stringify({ callsign: flight.realTime?.flight }),
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    // const regRes = await fetch(`http://localhost:8000/api/reg`, {
+    //   method: "POST",
+    //   body: JSON.stringify({ hex_code: flight.hex }),
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    // const aircraft = (await regRes.json()) as Fr24AircraftDetail;
+    // const reg = aircraft.result.response.aircraft.data[0].registration;
 
     // Now get the active flight for that A/C registration
-    const acRes = await fetch(`http://localhost:8000/api/flight`, {
+    const acRes = await fetch(`http://localhost:8000/api/callsign`, {
       method: "POST",
-      body: JSON.stringify({ reg }),
+      body: JSON.stringify({ callsign: flight.realTime?.flight }),
       headers: { "Content-Type": "application/json" },
     });
     const thisFlight = (await acRes.json()) as Fr24FlightResponse;

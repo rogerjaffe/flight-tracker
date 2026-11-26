@@ -1,4 +1,5 @@
 import datetime
+import json
 import os
 import signal
 
@@ -28,11 +29,15 @@ class HexCodeRoute(BaseModel):
 class RegRoute(BaseModel):
   reg: str
 
+class CallsignRoute(BaseModel):
+  callsign: str
+
 
 # Define the origins that are allowed to make requests to your API
 origins = [
   "http://localhost:3000",  # Common React/Vue local dev port
   "http://localhost:5173",  # Your production domain
+  "http://localhost:5174"
 ]
 
 # Add the CORS middleware to the application
@@ -43,6 +48,24 @@ app.add_middleware(
     allow_methods=["*"],              # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],              # Allows all request headers
 )
+
+
+def get_iata_by_icao(file_path: str, target_icao: str) -> str | None:
+  with open(file_path, "r", encoding="utf-8") as f:
+    records = json.load(f)
+
+  # Normalize target string to avoid case mismatches
+  target = target_icao.strip().upper()
+
+  # Find the first matching dictionary and return its 'iata' value
+  return next(
+    (
+      item.get("iata")
+      for item in records
+      if str(item.get("icao", "")).upper() == target
+    ),
+    None  # Default value returned if no match is found
+  )
 
 # ----------------------------------------------------
 # 1. API ROUTES (Must be declared BEFORE static files)
@@ -57,7 +80,9 @@ def get_config():
 @app.post("/api/reg")
 async def get_reg(hex_code: HexCodeRoute):
   try:
-    response = requests.get(url=f"https://api.flightradar24.com/common/v1/search.json?fetchBy=reg&query={hex_code.hex_code}", timeout=5, impersonate='chrome146')
+    reg_response = requests.get(url=f"https://hexdb.io/api/v2/aircraft/{hex_code.hex_code}", timeout=5, impersonate='chrome146')
+    reg = reg_response.json()
+    response = requests.get(url=f"https://api.flightradar24.com/common/v1/search.json?fetchBy=reg&query={reg['registration']}", timeout=5, impersonate='chrome146')
     try:
       return response.json()
     except Exception:
@@ -69,6 +94,20 @@ async def get_reg(hex_code: HexCodeRoute):
 async def get_flight(reg: RegRoute):
   try:
     response = requests.get(url=f"https://api.flightradar24.com/common/v1/flight/list.json?&fetchBy=reg&page=1&limit=25&query={reg.reg}", timeout=5, impersonate='chrome146')
+    try:
+      return response.json()
+    except Exception:
+      return {"error": "Failed to parse JSON response"}
+  except Exception as e:
+    return {"error": f"An error occurred: {str(e)}"}
+
+@app.post("/api/callsign")
+async def get_flight_by_callsign(callsign: CallsignRoute):
+  try:
+    icao = callsign.callsign[0:3]
+    fn = callsign.callsign[3:]
+    iata = get_iata_by_icao("airlines.json", icao)
+    response = requests.get(url=f"https://api.flightradar24.com/common/v1/flight/list.json?&fetchBy=flight&page=1&limit=25&query={iata}{fn}", timeout=5, impersonate='chrome146')
     try:
       return response.json()
     except Exception:

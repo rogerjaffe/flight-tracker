@@ -6,7 +6,7 @@ from config_defaults import ADSBServer, UserConfig, AppConfig
 # radius will retrieve more flights, but if there are too many
 # the server will get rate limited and you'll have to lower the
 # radius.  I've had good luck at 60km
-user_config = UserConfig(lat=32.800016, lon=-117.052769, radius=60)
+user_config = UserConfig(lat=32.795182, lon=-117.042920, radius=80)
 
 # Enable the ADS-B servers with is_enabled=True.
 
@@ -26,7 +26,7 @@ piaware_server = ADSBServer(
   data_path="aircraft",
   interval=1,
   stale_age=60,
-  is_enabled=False)
+  is_enabled=True)
 
 # Fallback airplanes_live_server -- if you're not running a local receiver
 # is a public server, but do not change the interval due to the API's rate limitation
