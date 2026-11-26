@@ -80,7 +80,7 @@ pip install -r requirements.txt
 
 ### Set up the user configuration
 
-1. Open the `~/flight-tracker-py-web/server/config.py` file in the project root
+1. Open the `~/flight-tracker/server/config.py` file in the project root
 2. In the [user] section set the latitude and longitude of the point around which you want to find flights.
 3. Set the view radius (in km). You may need to adjust the radius depending on the amount of airplane traffic in your
   area. Busier airspace should have a smaller radius to avoid overloading the source API. If you find that flights are
